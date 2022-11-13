@@ -9,14 +9,10 @@ function main(array $args): array
     $db->exec("INSERT INTO hello (name) VALUES ('${argName}')");
     $result = $db->query('SELECT * FROM hello');
     $json = json_encode($result->fetchAll(PDO::FETCH_ASSOC));
-    // foreach($result as $row) {
-    //     print_r($row);
-    // }
 
     $db = NULL;
 
-    // json stringigy the result
-    
+
 
     return [
         'body' => $json,
