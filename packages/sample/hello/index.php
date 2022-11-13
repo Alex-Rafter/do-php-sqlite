@@ -8,14 +8,17 @@ function main(array $args): array
     $db->exec("CREATE TABLE IF NOT EXISTS hello (id INTEGER PRIMARY KEY, name TEXT)");
     $db->exec("INSERT INTO hello (name) VALUES ('${argName}')");
     $result = $db->query('SELECT * FROM hello');
-
+    $json = json_encode($result->fetchAll(PDO::FETCH_ASSOC));
     // foreach($result as $row) {
     //     print_r($row);
     // }
 
     $db = NULL;
 
+    // json stringigy the result
+    
+
     return [
-        'body' => $result,
+        'body' => $json,
     ];
 }
