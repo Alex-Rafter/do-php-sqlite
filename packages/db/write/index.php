@@ -4,7 +4,7 @@ function main(array $args): array
 {
 
     $argName = $args["name"] ?? "stranger";
-    $db = new PDO('sqlite:../../../data/sample.db');
+    $db = new PDO('sqlite:../read/sample.db');
     $db->exec("CREATE TABLE IF NOT EXISTS hello (id INTEGER PRIMARY KEY, name TEXT)");
     $db->exec("INSERT INTO hello (name) VALUES ('${argName}')");
     $result = $db->query('SELECT * FROM hello');
